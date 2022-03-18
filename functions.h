@@ -1,66 +1,107 @@
 #pragma once
 
 #include <iostream>
+#include <string>
+#include <stdlib.h>
 using namespace std;
 
 class User
 {
-private:
-    string username, password;
+public: // remember to change private again
+    string Username, Password;
 
 public:
-    void Login();
-    virtual void CheckAccount();
-    void LogOut();
-    void ChangePassword();
-    virtual void ViewPersonalInfo();
+    User(string username, string password)
+    {
+        Username = username;
+        Password = password;
+    }
+    void setAccount(string username, string password)
+    {
+        Username = username;
+        Password = password;
+    }
+    void login()
+    {
+        string username, password;
+
+        system("CLS");
+        cout << "***----------------------      Welcome to Student Login Section    -----------------***" << endl;
+        cout << "Enter your username: ";
+        cin >> username;
+        cout << "Enter your password: ";
+        cin >> password;
+        Student student(username, password, "", "", "", "", "", "");
+    }
+
+    bool checkAccount(string username, string password)
+    {
+        if (Username == username && Password == password)
+            return true;
+        return false;
+    }
+    // void LogOut();
+    // void ChangePassword();
+    // virtual void ViewPersonalInfo();
 };
 
-class Student
+class Student : public User
 {
-private:
+public: // remember to change private again
     // student's properties
     string ID, LastName, FirstName, Gender, DateOfBirth, SocialID;
 
     // student's operations
 public:
     // create a custom destructor or initial value for Student
-    Student(string id, string lastName, string firstName, string gender, string dateOfBirth, string socialID);
+    Student(string username, string password, string id, string lastName, string firstName, string gender, string dateOfBirth, string socialID) : User(username, password)
+    {
+        ID = id;
+        LastName = lastName;
+        FirstName = firstName;
+        Gender = gender;
+        DateOfBirth = dateOfBirth;
+        SocialID = socialID;
+    }
 
-    void CourseRegister();
-    void ViewCoursesEnrolled();
-    void ViewCoursesNotEnrolled();
-    void ViewScore();
+    // void CourseRegister();
+    // void ViewCoursesEnrolled();
+    // void ViewCoursesNotEnrolled();
+    // void ViewScore();
 };
 
-class Course
-{
-private:
-    string ID, Name, Teachername, Max, S1Day, S1Time, S2Day, S2Time;
-    int NumberOfCredits;
+// class Course
+// {
+// private:
+//     string ID, Name, Teachername, Max, S1Day, S1Time, S2Day, S2Time;
+//     int NumberOfCredits;
 
-public:
-    void Delete();
-    void Update();
-    void ViewInfo();
-    void ViewStudents();
-};
+// public:
+//     void Delete();
+//     void Update();
+//     void ViewInfo();
+//     void ViewStudents();
+// };
 
-class Staff
-{
-private:
-    string ID, LastName, FirstName;
+// class Staff
+// {
+// private:
+//     string ID, LastName, FirstName;
 
-public:
-    void createSchoolYear(); // create a new folder
-    void displaySchoolYear();
-    void createSemester(); // create a new folder
-    void displaySemester();
-    void displayClass();
-};
+// public:
+//     void createSchoolYear(); // create a new folder
+//     void displaySchoolYear();
+//     void createSemester(); // create a new folder
+//     void displaySemester();
+//     void displayClass();
+// };
 
-class Teacher
-{
-private:
-public:
-};
+// class Teacher
+// {
+// private:
+// public:
+// };
+
+void start();
+
+// void staffLogin();

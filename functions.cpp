@@ -1,14 +1,31 @@
 #include "functions.h"
 
-// <------------- Student ---------->
-Student ::Student(string id, string lastName, string firstName, string gender, string dateOfBirth, string socialID)
+void start()
 {
-    ID = id;
-    LastName = lastName;
-    FirstName = firstName;
-    Gender = gender;
-    DateOfBirth = dateOfBirth;
-    SocialID = socialID;
+    int n;
+
+    system("CLS"); // used for clearing the console
+    cout << "***----------------------      Welcome to Student Management System    -----------------***" << endl;
+    cout << "Please choose whether you are student or teacher: " << endl;
+    cout << "1. Student" << endl;
+    cout << "2. Academic Staff" << endl;
+    cout << "3. End process" << endl;
+    cout << "Your choice: ";
+    cin >> n;
+
+    if (n == 1)
+    {
+        Student student()
+    }
+    else if (n == 2)
+    {
+        // Staff staff.login();
+        cout << "staff";
+    }
+    else
+    {
+        cout << "Have a nice day ^-^ ";
+    }
 }
 
-// <------------- End Student --------->
+
