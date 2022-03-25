@@ -2,8 +2,8 @@
 #include "functions.cpp"
 int main()
 {
-    //start();
-    CreateSemester();
+    start();
+
     // test
 }
 

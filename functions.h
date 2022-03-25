@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <conio.h> //take getCh() from this library
 #include <stdio.h>
+#include <iomanip> //format into table data
 using namespace std;
 
 struct Course
@@ -17,7 +18,7 @@ struct Course
 
 struct Student
 {
-    string no, ID, LastName, FirstName, Username, Password, Gender, Email, Class;
+    string no, ID, LastName, FirstName, Gender, DateOfBirth, SocialID, Password;
 };
 
 struct Node
@@ -38,27 +39,40 @@ struct StaffList
 };
 
 void start();
-void ExtractStudentInfoFromCSVFileAndTurnToSLL(Node *&pHead);
-void openCSVFileFromUserInput();
 void loginSection();
-void ExtractStudentInfoFromCSVFileAndTurnToSLL(Node *&pHead);
-bool validateUser(string username, string password, Node *pHead, Student &curStudent);
-void StudentLoginSection(Node *pStudentSLL);
+void openCSVFileFromUserInput();
+
+// student
+void StudentLoginSection();
+void displayStudentInfo(string classAddress);
+void changePassword();
+void updatePasswordChangeToCSVFile(string classAddress);
+void ExtractStudentInClass(Node *&pHead, string schoolYear, string className);
+void writeCSVFile(string classAddress);
+
+void findStudentInAClass(string curID, string address, bool &isStudentExist, string password);
+bool findStudentWithID(string ID, string &classAddress, string password);
+
+// staff
 void AcademicStaffLoginSection();
-void displayStudentInfo(Student curStudent, Node *pStudentSLL);
-void writeCSVFile(Node *pStudentSLL);
-void updatePasswordChangeToCSVFile(Student curStudent, Node *&pStudentSLL);
-void changePassword(Student &curStudent);
-void createNewDirectory();
-void ListAllFileNames(string address, bool isFile);
-string removeType(string s);
-
-void inputCourse();
-
-void StaffMenu(Staff staff);
+void StaffMenu();
 void viewStaffPersonalInfo(Staff staff, StaffList *&pHead);
 bool validateStaff(string username, string password, StaffList *pHead, Staff &staff);
 void ExtractStaffInfoAndTurnToSLL(StaffList *&pHead);
 void writeChangesToStaffCSV(StaffList *pHead);
 void changeStaffPassword(Staff &staff, StaffList *&pHead);
-void CreateSemester();
+void viewSchoolYear();
+void viewClassesInSchoolYear(string address, string schoolYear);
+void viewStudentInClass(string address, string className, string schoolYear);
+void createNewSchoolYear();
+void viewSemesters(string address, string schoolYear);
+void CreateSemester(string address, string schoolYear);
+
+// Files
+void createNewDirectory(string url);
+void ListAllFileNames(string address, bool isFile, string arr[], int &num);
+string removeType(string s);
+
+// format
+template <class T>
+void printElement(T t, const int &width);
